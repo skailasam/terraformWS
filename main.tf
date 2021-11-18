@@ -10,6 +10,15 @@ resource "aws_instance" "webserver" {
   tags = {
     "Name" = "Mick's Webserver"
   }
+  user_data = <<-EOF
+#!/bin/bash
+# Install Apache Web Server 
+yum install -y httpd
+echo "Hello Captain!" > /var/www/html/index.html
+# Turn on web server 
+chkconfig httpd on 
+service httpd start
+EOF 
 }
 resource "aws_security_group" "web" {
   name_prefix = "web-access"
@@ -41,3 +50,4 @@ output "public_ip" {
   description = "Public IP Address"
   value = aws_instance.webserver.public_ip
 }
+
