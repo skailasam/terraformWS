@@ -6,4 +6,7 @@ provider "aws" {
 resource "aws_instance" "webserver" {
   ami           = "ami-0cd855c8009cb26ef"
   instance_type = "t2.nano"
+  tags = {
+    "Name" = "Mick's Webserver"
+  }
 }
