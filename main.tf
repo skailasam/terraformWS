@@ -10,7 +10,7 @@ resource "aws_instance" "webserver" {
   tags = {
     "Name" = "Mick's Webserver"
   }
-  user_data = file("user_data.sh")
+  user_data = templatefile("user_data.sh", {username = var.username})
 }
 resource "aws_security_group" "web" {
   name_prefix = "web-access"
@@ -36,6 +36,11 @@ variable "instance_type" {
   type = string
   description = "Instance type for the web server."
   default = "t2.nano"
+}
+variable "username" {
+  type = string
+  description = "value"
+  default = "BraucheName"
 }
 
 output "public_ip" {
