@@ -1,6 +1,5 @@
 output "public_ip" {
-  description = "Public IP Address"
-  value       = [for webserver in aws_instance.webserver : webserver.public_ip]
+  value = module.test-webserver.public_ip
 }
 
 output "public_subnets" {
