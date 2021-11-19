@@ -1,7 +1,7 @@
 locals {
   tags = {
     Projekt = "TecRacccceeer"
-    Owner = "Enterprise"
+    Owner   = "Enterprise"
   }
-  customer = { Name = "CustomerName"}
+  customer = { Name = "CustomerName" }
 }
